@@ -31,7 +31,6 @@
 // defines
 #define REBOOT_WAIT 5000            // reboot after 5 seconds
 #define AUDIO_BUFFER 2048           // buffer size for reading the wav file and sending to i2s
-#define WAV_FILE "/sdcard/test.wav" // wav file to play
 
 // constants
 const char *TAG = "esp-idf-wav-player";
@@ -47,8 +46,8 @@ esp_err_t i2s_setup(void)
 
   // setup the i2s config
   i2s_std_config_t std_cfg = {
-      .clk_cfg = I2S_STD_CLK_DEFAULT_CONFIG(44100),                                                    // the wav file sample rate
-      .slot_cfg = I2S_STD_PHILIPS_SLOT_DEFAULT_CONFIG(I2S_DATA_BIT_WIDTH_16BIT, I2S_SLOT_MODE_STEREO), // the wav faile bit and channel config
+      .clk_cfg = I2S_STD_CLK_DEFAULT_CONFIG(22050),                                                    // the wav file sample rate
+      .slot_cfg = I2S_STD_PHILIPS_SLOT_DEFAULT_CONFIG(I2S_DATA_BIT_WIDTH_16BIT, I2S_SLOT_MODE_MONO), // the wav faile bit and channel config
       .gpio_cfg = {
           // refer to configuration.h for pin setup
           .mclk = I2S_SCLK_PIN,
@@ -63,6 +62,7 @@ esp_err_t i2s_setup(void)
           },
       },
   };
+  std_cfg.slot_cfg.slot_mask = I2S_STD_SLOT_RIGHT;
   return i2s_channel_init_std_mode(tx_handle, &std_cfg);
 }
 

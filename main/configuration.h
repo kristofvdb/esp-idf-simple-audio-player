@@ -37,6 +37,7 @@
 // Pin Configurations
 
 // I2S Configuration
+/*
 #define I2S_BLK_PIN GPIO_NUM_5
 #define I2S_WS_PIN GPIO_NUM_19
 #define I2S_DATA_OUT_PIN GPIO_NUM_23
@@ -50,6 +51,19 @@
 #define SDMMC_D1_PIN GPIO_PIN_4
 #define SDMMC_D2_PIN GPIO_PIN_12
 #define SDMMC_D3_PIN GPIO_PIN_13
+*/
+#define I2S_BLK_PIN GPIO_NUM_19
+#define I2S_WS_PIN GPIO_NUM_33
+#define I2S_DATA_OUT_PIN GPIO_NUM_22
+#define I2S_DATA_IN_PIN GPIO_NUM_23 
+#define I2S_SCLK_PIN I2S_GPIO_UNUSED
+
+// You can also change the pin assignments here by changing the following 4 lines.
+#define PIN_NUM_MISO  GPIO_NUM_21
+#define PIN_NUM_MOSI  GPIO_NUM_32
+#define PIN_NUM_CLK   GPIO_NUM_25
+#define PIN_NUM_CS    GPIO_NUM_26
+
 
 void print_system_info(void)
 {
